@@ -8,4 +8,8 @@ import java.util.Optional;
 public interface EstimatorRepository extends JpaRepository<EstimatorEntity, Integer> {
 
     Optional<EstimatorEntity> findById(Long id);
+
+    Optional<EstimatorEntity> findByName(String name);
+
+    void deleteById(Long id);
 }
