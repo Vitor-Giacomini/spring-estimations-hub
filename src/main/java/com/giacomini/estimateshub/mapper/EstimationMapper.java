@@ -17,6 +17,7 @@ public class EstimationMapper {
 
     public static EstimationDTO toDTO(EstimationEntity entity){
         return EstimationDTO.builder()
+                .estimationId(entity.getId())
                 .estimationDescription(entity.getDescription())
                 .estimationSavings(entity.getSavings())
                 .estimatorId(entity.getEstimator().getId())

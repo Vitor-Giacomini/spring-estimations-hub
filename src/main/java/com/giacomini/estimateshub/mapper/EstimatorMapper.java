@@ -18,6 +18,7 @@ public class EstimatorMapper {
 
     public static EstimatorDTO toDTO(EstimatorEntity entity){
         return EstimatorDTO.builder()
+                .estimatorId(entity.getId())
                 .estimatorName(entity.getName())
                 .estimatorPhoto(entity.getPhoto())
                 .build();
@@ -25,6 +26,7 @@ public class EstimatorMapper {
 
     public static EstimatorEstimationsDTO toEstimatorEstimationsDTO(EstimatorEntity entity){
         return EstimatorEstimationsDTO.builder()
+                .estimatorId(entity.getId())
                 .estimatorName(entity.getName())
                 .estimatorPhoto(entity.getPhoto())
                 .estimationList(entity.getEstimationList().stream().map(EstimationMapper::toDTO).collect(Collectors.toList()))

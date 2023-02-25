@@ -19,6 +19,7 @@ public class ProductMapper {
 
     public static ProductDTO toDTO(ProductEntity entity){
         return ProductDTO.builder()
+                .productId(entity.getId())
                 .productName(entity.getName())
                 .productPhoto(entity.getPhoto())
                 .productPrice(entity.getPrice())
@@ -27,6 +28,7 @@ public class ProductMapper {
 
     public static ProductEstimationsDTO toProductEstimationsDTO(ProductEntity entity){
         return ProductEstimationsDTO.builder()
+                .productId(entity.getId())
                 .productName(entity.getName())
                 .productPhoto(entity.getPhoto())
                 .estimationList(entity.getEstimationList().stream().map(EstimationMapper::toDTO).collect(Collectors.toList()))
