@@ -10,8 +10,6 @@ public interface EstimationRepository extends JpaRepository<EstimationEntity, In
 
     Optional<EstimationEntity> findById(Long id);
 
-    Optional<EstimatorEntity> findByName(String name);
-
     void deleteById(Long id);
 
     Optional<EstimationEntity> findByDescription(String description);
