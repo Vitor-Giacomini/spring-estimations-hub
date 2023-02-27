@@ -45,7 +45,7 @@ public class EstimatorService {
 
     public EstimatorEntity updateEstimator(EstimatorRequest request, Long id){
         EstimatorEntity estimator = estimatorRepository.findById(id)
-                .orElseThrow(() -> new EstimatorNotFoundException("Estimator with id " + " does not exist."));
+                .orElseThrow(() -> new EstimatorNotFoundException("Estimator with id " + id + " does not exist."));
 
         return estimatorRepository.save(estimator);
     }
@@ -53,7 +53,7 @@ public class EstimatorService {
     @Transactional
     public void deleteEstimatorById(Long id){
         EstimatorEntity entity = estimatorRepository.findById(id).orElseThrow(() -> new
-                EstimatorNotFoundException("Estimator with id " + " does not exist."));
+                EstimatorNotFoundException("Estimator with id " + id + " does not exist."));
 
         estimatorRepository.deleteById(entity.getId());
     }

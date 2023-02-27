@@ -11,7 +11,6 @@ public class EstimationMapper {
         return EstimationEntity.builder()
                 .description(request.getEstimationDescription())
                 .savings(request.getEstimationSavings())
-                // estimator e product?
                 .build();
     }
 
