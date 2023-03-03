@@ -19,8 +19,21 @@ public class EstimationMapper {
                 .estimationId(entity.getId())
                 .estimationDescription(entity.getDescription())
                 .estimationSavings(entity.getSavings())
-                .estimatorId(entity.getEstimator().getId())
-                .productId(entity.getProduct().getId())
+                .productName(entity.getProduct().getName())
+                .productPhoto(entity.getProduct().getPhoto())
+                .estimatorName(entity.getEstimator().getName())
+                .estimatorPhoto(entity.getEstimator().getPhoto())
                 .build();
     }
+
+    /*public static EstimationDTO toEstimatorEstimationsDTO(EstimationEntity entity){
+        return EstimationDTO.builder()
+                .estimationId(entity.getId())
+                .estimationDescription(entity.getDescription())
+                .estimationSavings(entity.getSavings())
+                .productName(entity.getProduct().getName())
+                .estimatorName(entity.getEstimator().getName())
+                .estimatorName(entity.getEstimator().getPhoto())
+                .build();
+    }*/
 }

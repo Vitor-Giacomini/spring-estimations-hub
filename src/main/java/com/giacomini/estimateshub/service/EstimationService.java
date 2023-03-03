@@ -40,7 +40,7 @@ public class EstimationService {
         return EstimationMapper.toDTO(estimation);
     }
 
-    public EstimationDTO postEstimation(EstimationRequest request){ // Get by Description funcionará?
+    public EstimationDTO postEstimation(EstimationRequest request){
 
         Optional<EstimationEntity> estimation = estimationRepository.findByDescription(request.getEstimationDescription());
         if (estimation.isPresent()){

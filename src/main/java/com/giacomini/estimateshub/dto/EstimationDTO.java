@@ -1,5 +1,7 @@
 package com.giacomini.estimateshub.dto;
 
+import com.giacomini.estimateshub.entity.EstimatorEntity;
+import com.giacomini.estimateshub.entity.ProductEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +16,8 @@ public class EstimationDTO {
     private long estimationId;
     private String estimationDescription;
     private float estimationSavings;
-    private long estimatorId;
-    private long productId;
+    private String estimatorName;
+    private String estimatorPhoto;
+    private String productName;
+    private String productPhoto;
 }
