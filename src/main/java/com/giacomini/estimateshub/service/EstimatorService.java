@@ -47,6 +47,9 @@ public class EstimatorService {
         EstimatorEntity estimator = estimatorRepository.findById(id)
                 .orElseThrow(() -> new EstimatorNotFoundException("Estimator with id " + id + " does not exist."));
 
+        estimator.setName(request.getEstimatorName());
+        estimator.setPhoto(request.getEstimatorPhoto());
+
         return estimatorRepository.save(estimator);
     }
 

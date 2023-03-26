@@ -19,6 +19,7 @@ public class EstimationMapper {
                 .estimationId(entity.getId())
                 .estimationDescription(entity.getDescription())
                 .estimationSavings(entity.getSavings())
+                .estimationStatus(entity.getStatus())
                 .productName(entity.getProduct().getName())
                 .productPhoto(entity.getProduct().getPhoto())
                 .estimatorName(entity.getEstimator().getName())

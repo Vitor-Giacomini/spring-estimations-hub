@@ -86,7 +86,7 @@ public class EstimationController {
     }
 
     @ApiOperation(
-            value = "Put Estimation by id",
+            value = "Put Estimation Status by id",
             response = EstimationDTO.class,
             produces = "application/json"
     )

@@ -16,6 +16,7 @@ public class EstimationDTO {
     private long estimationId;
     private String estimationDescription;
     private float estimationSavings;
+    private String estimationStatus;
     private String estimatorName;
     private String estimatorPhoto;
     private String productName;

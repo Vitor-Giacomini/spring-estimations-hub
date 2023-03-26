@@ -68,6 +68,7 @@ public class EstimationService {
         EstimationEntity estimation = estimationRepository.findById(id)
                 .orElseThrow(() -> new EstimationNotFoundException("Estimation with id " + id + " does not exist."));
 
+        estimation.setStatus(request.getEstimationStatus());
         return estimationRepository.save(estimation);
     }
 

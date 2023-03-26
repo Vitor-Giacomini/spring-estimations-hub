@@ -21,6 +21,9 @@ public class EstimationEntity {
     @Column(name = "estimate_savings")
     private float savings;
 
+    @Column(name = "estimate_status")
+    private String status;
+
     @ManyToOne
     @JoinColumn(name = "estimator_id", referencedColumnName = "id")
     private EstimatorEntity estimator;
