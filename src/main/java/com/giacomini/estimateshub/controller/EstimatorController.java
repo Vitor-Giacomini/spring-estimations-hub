@@ -57,8 +57,8 @@ public class EstimatorController {
             @ApiResponse(code = 500, message = "Internal Server Error", response = BaseResponseError.class)
     })
     @GetMapping()
-    public BaseResponse<List<EstimatorEstimationsDTO>> getAllEstimators(){
-        return BaseResponse.<List<EstimatorEstimationsDTO>>builder()
+    public BaseResponse<List<EstimatorDTO>> getAllEstimators(){
+        return BaseResponse.<List<EstimatorDTO>>builder()
                 .httpCode(200)
                 .message("OK")
                 .response(estimatorService.getAllEstimators())

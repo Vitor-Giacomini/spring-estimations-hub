@@ -22,8 +22,8 @@ public class EstimatorService {
 
     private final EstimatorRepository estimatorRepository;
 
-    public List<EstimatorEstimationsDTO> getAllEstimators(){
-        return estimatorRepository.findAll().stream().map(EstimatorMapper::toEstimatorEstimationsDTO).collect(Collectors.toList());
+    public List<EstimatorDTO> getAllEstimators(){
+        return estimatorRepository.findAll().stream().map(EstimatorMapper::toDTO).collect(Collectors.toList());
     }
 
     public EstimatorDTO getById(Long id){
