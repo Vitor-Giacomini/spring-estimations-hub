@@ -14,4 +14,5 @@ public class EstimatorDTO {
     private long estimatorId;
     private String estimatorName;
     private String estimatorPhoto;
+    private String estimatorSpecialization;
 }

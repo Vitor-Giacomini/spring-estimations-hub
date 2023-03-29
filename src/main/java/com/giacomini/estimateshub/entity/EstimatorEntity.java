@@ -23,6 +23,9 @@ public class EstimatorEntity {
     @Column(name = "estimator_photo")
     private String photo;
 
+    @Column(name = "estimator_specialization")
+    private String specialization;
+
     @OneToMany
     @JoinColumn(name = "estimate_id", referencedColumnName = "id")
     private List<EstimationEntity> estimationList;

@@ -13,6 +13,7 @@ public class EstimatorMapper {
         return EstimatorEntity.builder()
                 .name(request.getEstimatorName())
                 .photo(request.getEstimatorPhoto())
+                .specialization(request.getEstimatorSpecialization())
                 .build();
     }
 
@@ -21,6 +22,7 @@ public class EstimatorMapper {
                 .estimatorId(entity.getId())
                 .estimatorName(entity.getName())
                 .estimatorPhoto(entity.getPhoto())
+                .estimatorSpecialization(entity.getSpecialization())
                 .build();
     }
 
@@ -29,7 +31,8 @@ public class EstimatorMapper {
                 .estimatorId(entity.getId())
                 .estimatorName(entity.getName())
                 .estimatorPhoto(entity.getPhoto())
+                .estimatorSpecialization(entity.getSpecialization())
                 .estimationList(entity.getEstimationList().stream().map(EstimationMapper::toDTO).collect(Collectors.toList()))
-                .build();                                           // ^ É o EstimationMapper mesmo?
+                .build();
     }
 }

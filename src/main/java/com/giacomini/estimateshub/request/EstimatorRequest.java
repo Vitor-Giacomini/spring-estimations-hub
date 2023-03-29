@@ -13,4 +13,5 @@ public class EstimatorRequest {
 
     private String estimatorName;
     private String estimatorPhoto;
+    private String estimatorSpecialization;
 }

@@ -49,6 +49,7 @@ public class EstimatorService {
 
         estimator.setName(request.getEstimatorName());
         estimator.setPhoto(request.getEstimatorPhoto());
+        estimator.setSpecialization(request.getEstimatorSpecialization());
 
         return estimatorRepository.save(estimator);
     }
