@@ -22,8 +22,8 @@ public class ProductService {
 
     private final ProductRepository productRepository;
 
-    public List<ProductEstimationsDTO> getAllProducts(){
-        return productRepository.findAll().stream().map(ProductMapper::toProductEstimationsDTO).collect(Collectors.toList());
+    public List<ProductDTO> getAllProducts(){
+        return productRepository.findAll().stream().map(ProductMapper::toDTO).collect(Collectors.toList());
     }
 
     public ProductDTO getById(Long id){

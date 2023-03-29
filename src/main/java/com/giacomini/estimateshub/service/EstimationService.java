@@ -59,6 +59,7 @@ public class EstimationService {
         EstimationEntity newEstimation = EstimationMapper.toEntity(request);
         newEstimation.setEstimator(estimator);
         newEstimation.setProduct(product);
+        newEstimation.setStatus("proposed");
         estimationRepository.save(newEstimation);
 
         return EstimationMapper.toDTO(newEstimation);
