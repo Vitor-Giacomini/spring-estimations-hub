@@ -56,8 +56,8 @@ public class ProductController {
             @ApiResponse(code = 500, message = "Internal Server Error", response = BaseResponseError.class)
     })
     @GetMapping()
-    public BaseResponse<List<ProductDTO>> getAllProducts(){
-        return BaseResponse.<List<ProductDTO>>builder()
+    public BaseResponse<List<ProductEstimationsDTO>> getAllProducts(){
+        return BaseResponse.<List<ProductEstimationsDTO>>builder()
                 .httpCode(200)
                 .message("OK")
                 .response(productService.getAllProducts())

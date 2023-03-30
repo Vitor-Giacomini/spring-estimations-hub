@@ -14,5 +14,4 @@ public class ProductDTO {
     private long productId;
     private String productName;
     private String productPhoto;
-    private float productPrice;
 }

@@ -23,10 +23,6 @@ public class ProductEntity {
     @Column(name = "product_photo")
     private String photo;
 
-    @Column(name = "product_price")
-    private float price;
-
-    @OneToMany
-    @JoinColumn(name = "estimation_id", referencedColumnName = "id")
+    @OneToMany(mappedBy = "product")
     private List<EstimationEntity> estimationList;
 }

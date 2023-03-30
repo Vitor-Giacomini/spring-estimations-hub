@@ -13,7 +13,6 @@ public class ProductMapper {
         return ProductEntity.builder()
                 .name(request.getProductName())
                 .photo(request.getProductPhoto())
-                .price(request.getProductPrice())
                 .build();
     }
 
@@ -22,7 +21,6 @@ public class ProductMapper {
                 .productId(entity.getId())
                 .productName(entity.getName())
                 .productPhoto(entity.getPhoto())
-                .productPrice(entity.getPrice())
                 .build();
     }
 
@@ -31,7 +29,6 @@ public class ProductMapper {
                 .productId(entity.getId())
                 .productName(entity.getName())
                 .productPhoto(entity.getPhoto())
-                .productPrice(entity.getPrice())
                 .estimationList(entity.getEstimationList().stream().map(EstimationMapper::toDTO).collect(Collectors.toList()))
                 .build();
     }
