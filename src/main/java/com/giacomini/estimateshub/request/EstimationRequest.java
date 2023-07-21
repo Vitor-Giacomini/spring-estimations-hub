@@ -14,6 +14,6 @@ public class EstimationRequest {
     private String estimationDescription;
     private float estimationSavings;
     private String estimationStatus;
-    private long estimatorId;
-    private long productId;
+    private String estimatorName;
+    private String productName;
 }

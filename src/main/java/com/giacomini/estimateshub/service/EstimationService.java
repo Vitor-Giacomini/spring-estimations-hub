@@ -42,19 +42,13 @@ public class EstimationService {
 
     public EstimationDTO postEstimation(EstimationRequest request){
 
-        Optional<EstimationEntity> estimation = estimationRepository.findByDescription(request.getEstimationDescription());
-        if (estimation.isPresent()){
-            throw new EstimatorAlreadyExistsException
-                    ("Estimation with description " + request.getEstimationDescription() + " already exists.");
-        }
-
-        EstimatorEntity estimator = estimatorRepository.findById(request.getEstimatorId())
+        EstimatorEntity estimator = estimatorRepository.findByName(request.getEstimatorName())
                 .orElseThrow(() -> new EstimatorNotFoundException
-                        ("Estimator with id " + request.getEstimatorId() + " does not exist."));
+                        ("Estimator with name " + request.getEstimatorName() + " does not exist."));
 
-        ProductEntity product = productRepository.findById(request.getProductId())
+        ProductEntity product = productRepository.findByName(request.getProductName())
                 .orElseThrow(() -> new ProductNotFoundException
-                        ("Product with id " + request.getProductId() + " does not exist."));
+                        ("Product with name " + request.getProductName() + " does not exist."));
 
         EstimationEntity newEstimation = EstimationMapper.toEntity(request);
         newEstimation.setEstimator(estimator);
