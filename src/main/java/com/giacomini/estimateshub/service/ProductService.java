@@ -49,6 +49,7 @@ public class ProductService {
                 .orElseThrow(() -> new ProductNotFoundException("Product with id " + id + " does not exist."));
 
         product.setName(request.getProductName());
+        product.setPhoto(request.getProductPhoto());
         return productRepository.save(product);
     }
 
