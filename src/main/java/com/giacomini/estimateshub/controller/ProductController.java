@@ -7,9 +7,10 @@ import com.giacomini.estimateshub.request.ProductRequest;
 import com.giacomini.estimateshub.response.BaseResponse;
 import com.giacomini.estimateshub.response.BaseResponseError;
 import com.giacomini.estimateshub.service.ProductService;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,17 +23,12 @@ public class ProductController {
 
     private final ProductService productService;
 
-    @ApiOperation(
-            value = "Get Product by id",
-            response = ProductDTO.class,
-            produces = "application/json"
-    )
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Successfully found Product"),
-            @ApiResponse(code = 400, message = "Bad Request", response = BaseResponseError.class),
-            @ApiResponse(code = 401, message = "Unauthorized", response = BaseResponseError.class),
-            @ApiResponse(code = 404, message = "Order not found", response = BaseResponseError.class),
-            @ApiResponse(code = 500, message = "Internal Server Error", response = BaseResponseError.class)
+    @Operation(summary = "Get Product by id", responses = {
+            @ApiResponse(responseCode = "200", description = "Successfully found Product", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProductDTO.class))),
+            @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class))),
+            @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class))),
+            @ApiResponse(responseCode = "404", description = "Product not found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class))),
+            @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class)))
     })
     @GetMapping("/{id}")
     public BaseResponse<ProductDTO> getProductById(@PathVariable Long id){
@@ -43,17 +39,12 @@ public class ProductController {
                 .build();
     }
 
-    @ApiOperation(
-            value = "Get all Products",
-            response = ProductEstimationsDTO.class,
-            produces = "application/json"
-    )
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Successfully found all Products"),
-            @ApiResponse(code = 400, message = "Bad Request", response = BaseResponseError.class),
-            @ApiResponse(code = 401, message = "Unauthorized", response = BaseResponseError.class),
-            @ApiResponse(code = 404, message = "Order not found", response = BaseResponseError.class),
-            @ApiResponse(code = 500, message = "Internal Server Error", response = BaseResponseError.class)
+    @Operation(summary = "Get all Products", responses = {
+            @ApiResponse(responseCode = "200", description = "Successfully found all Products", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProductEstimationsDTO.class))),
+            @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class))),
+            @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class))),
+            @ApiResponse(responseCode = "404", description = "No products found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class))),
+            @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class)))
     })
     @GetMapping()
     public BaseResponse<List<ProductEstimationsDTO>> getAllProducts(){
@@ -64,17 +55,12 @@ public class ProductController {
                 .build();
     }
 
-    @ApiOperation(
-            value = "Post new Product",
-            response = ProductDTO.class,
-            produces = "application/json"
-    )
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Successfully created Product"),
-            @ApiResponse(code = 400, message = "Bad Request", response = BaseResponseError.class),
-            @ApiResponse(code = 401, message = "Unauthorized", response = BaseResponseError.class),
-            @ApiResponse(code = 404, message = "Order not found", response = BaseResponseError.class),
-            @ApiResponse(code = 500, message = "Internal Server Error", response = BaseResponseError.class)
+    @Operation(summary = "Post new Product", responses = {
+            @ApiResponse(responseCode = "200", description = "Successfully created Product", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProductDTO.class))),
+            @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class))),
+            @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class))),
+            @ApiResponse(responseCode = "404", description = "Order not found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class))),
+            @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class)))
     })
     @PostMapping()
     public BaseResponse<ProductDTO> postProduct(@RequestBody ProductRequest request){
@@ -85,17 +71,12 @@ public class ProductController {
                 .build();
     }
 
-    @ApiOperation(
-            value = "Put Product by id",
-            response = ProductDTO.class,
-            produces = "application/json"
-    )
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Successfully updated Product"),
-            @ApiResponse(code = 400, message = "Bad Request", response = BaseResponseError.class),
-            @ApiResponse(code = 401, message = "Unauthorized", response = BaseResponseError.class),
-            @ApiResponse(code = 404, message = "Order not found", response = BaseResponseError.class),
-            @ApiResponse(code = 500, message = "Internal Server Error", response = BaseResponseError.class)
+    @Operation(summary = "Put Product by id", responses = {
+            @ApiResponse(responseCode = "200", description = "Successfully updated Product", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProductDTO.class))),
+            @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class))),
+            @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class))),
+            @ApiResponse(responseCode = "404", description = "Product not found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class))),
+            @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class)))
     })
     @PutMapping("/{id}")
     public BaseResponse<ProductDTO> putProduct(@RequestBody ProductRequest request, @PathVariable Long id){
@@ -106,17 +87,12 @@ public class ProductController {
                 .build();
     }
 
-    @ApiOperation(
-            value = "Delete Product by id",
-            response = ProductDTO.class,
-            produces = "application/json"
-    )
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Successfully deleted Product"),
-            @ApiResponse(code = 400, message = "Bad Request", response = BaseResponseError.class),
-            @ApiResponse(code = 401, message = "Unauthorized", response = BaseResponseError.class),
-            @ApiResponse(code = 404, message = "Order not found", response = BaseResponseError.class),
-            @ApiResponse(code = 500, message = "Internal Server Error", response = BaseResponseError.class)
+    @Operation(summary = "Delete Product by id", responses = {
+            @ApiResponse(responseCode = "200", description = "Successfully deleted Product", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProductDTO.class))),
+            @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class))),
+            @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class))),
+            @ApiResponse(responseCode = "404", description = "Product not found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class))),
+            @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class)))
     })
     @DeleteMapping("/{id}")
     public BaseResponse<ProductDTO> deleteProduct(@PathVariable("id") Long id){

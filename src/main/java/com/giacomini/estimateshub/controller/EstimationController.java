@@ -7,9 +7,10 @@ import com.giacomini.estimateshub.request.EstimationRequest;
 import com.giacomini.estimateshub.response.BaseResponse;
 import com.giacomini.estimateshub.response.BaseResponseError;
 import com.giacomini.estimateshub.service.EstimationService;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,17 +23,12 @@ public class EstimationController {
 
     private final EstimationService estimationService;
 
-    @ApiOperation(
-            value = "Get Estimation by id",
-            response = EstimationDTO.class,
-            produces = "application/json"
-    )
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Successfully found Estimation"),
-            @ApiResponse(code = 400, message = "Bad Request", response = BaseResponseError.class),
-            @ApiResponse(code = 401, message = "Unauthorized", response = BaseResponseError.class),
-            @ApiResponse(code = 404, message = "Order not found", response = BaseResponseError.class),
-            @ApiResponse(code = 500, message = "Internal Server Error", response = BaseResponseError.class)
+    @Operation(summary = "Get Estimation by id", responses = {
+            @ApiResponse(responseCode = "200", description = "Successfully found Estimation", content = @Content(mediaType = "application/json", schema = @Schema(implementation = EstimationDTO.class))),
+            @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class))),
+            @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class))),
+            @ApiResponse(responseCode = "404", description = "Estimation not found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class))),
+            @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class)))
     })
     @GetMapping("/{id}")
     public BaseResponse<EstimationDTO> getEstimationById(@PathVariable Long id){
@@ -43,17 +39,12 @@ public class EstimationController {
                 .build();
     }
 
-    @ApiOperation(
-            value = "Get all Estimations",
-            response = EstimationDTO.class,
-            produces = "application/json"
-    )
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Successfully found all Estimations"),
-            @ApiResponse(code = 400, message = "Bad Request", response = BaseResponseError.class),
-            @ApiResponse(code = 401, message = "Unauthorized", response = BaseResponseError.class),
-            @ApiResponse(code = 404, message = "Order not found", response = BaseResponseError.class),
-            @ApiResponse(code = 500, message = "Internal Server Error", response = BaseResponseError.class)
+    @Operation(summary = "Get all Estimations", responses = {
+            @ApiResponse(responseCode = "200", description = "Successfully found all Estimations", content = @Content(mediaType = "application/json", schema = @Schema(implementation = EstimationDTO.class))),
+            @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class))),
+            @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class))),
+            @ApiResponse(responseCode = "404", description = "No estimations found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class))),
+            @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class)))
     })
     @GetMapping()
     public BaseResponse<List<EstimationDTO>> getAllEstimations(){
@@ -64,17 +55,11 @@ public class EstimationController {
                 .build();
     }
 
-    @ApiOperation(
-            value = "Post new Estimation",
-            response = EstimationDTO.class,
-            produces = "application/json"
-    )
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Successfully created Estimation"),
-            @ApiResponse(code = 400, message = "Bad Request", response = BaseResponseError.class),
-            @ApiResponse(code = 401, message = "Unauthorized", response = BaseResponseError.class),
-            @ApiResponse(code = 404, message = "Order not found", response = BaseResponseError.class),
-            @ApiResponse(code = 500, message = "Internal Server Error", response = BaseResponseError.class)
+    @Operation(summary = "Post new Estimation", responses = {
+            @ApiResponse(responseCode = "200", description = "Successfully created Estimation", content = @Content(mediaType = "application/json", schema = @Schema(implementation = EstimationDTO.class))),
+            @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class))),
+            @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class))),
+            @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class)))
     })
     @PostMapping()
     public BaseResponse<EstimationDTO> postEstimation(@RequestBody EstimationRequest request){
@@ -85,17 +70,12 @@ public class EstimationController {
                 .build();
     }
 
-    @ApiOperation(
-            value = "Put Estimation Status by id",
-            response = EstimationDTO.class,
-            produces = "application/json"
-    )
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Successfully updated Estimation"),
-            @ApiResponse(code = 400, message = "Bad Request", response = BaseResponseError.class),
-            @ApiResponse(code = 401, message = "Unauthorized", response = BaseResponseError.class),
-            @ApiResponse(code = 404, message = "Order not found", response = BaseResponseError.class),
-            @ApiResponse(code = 500, message = "Internal Server Error", response = BaseResponseError.class)
+    @Operation(summary = "Put Estimation Status by id", responses = {
+            @ApiResponse(responseCode = "200", description = "Successfully updated Estimation", content = @Content(mediaType = "application/json", schema = @Schema(implementation = EstimationDTO.class))),
+            @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class))),
+            @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class))),
+            @ApiResponse(responseCode = "404", description = "Estimation not found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class))),
+            @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class)))
     })
     @PutMapping("/{id}")
     public BaseResponse<EstimationDTO> putEstimation(@RequestBody EstimationRequest request, @PathVariable Long id){
@@ -106,17 +86,12 @@ public class EstimationController {
                 .build();
     }
 
-    @ApiOperation(
-            value = "Delete Estimation by id",
-            response = EstimationDTO.class,
-            produces = "application/json"
-    )
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Successfully deleted Estimation"),
-            @ApiResponse(code = 400, message = "Bad Request", response = BaseResponseError.class),
-            @ApiResponse(code = 401, message = "Unauthorized", response = BaseResponseError.class),
-            @ApiResponse(code = 404, message = "Order not found", response = BaseResponseError.class),
-            @ApiResponse(code = 500, message = "Internal Server Error", response = BaseResponseError.class)
+    @Operation(summary = "Delete Estimation by id", responses = {
+            @ApiResponse(responseCode = "200", description = "Successfully deleted Estimation", content = @Content(mediaType = "application/json", schema = @Schema(implementation = EstimationDTO.class))),
+            @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class))),
+            @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class))),
+            @ApiResponse(responseCode = "404", description = "Estimation not found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class))),
+            @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BaseResponseError.class)))
     })
     @DeleteMapping("/{id}")
     public BaseResponse<EstimationDTO> deleteEstimation(@PathVariable("id") Long id){
